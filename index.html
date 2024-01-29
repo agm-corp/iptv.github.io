@@ -1,12 +1,65 @@
 <!DOCTYPE html>
-<HTML>
-  <head>
-    <title>Mi primer WEB</title>
-  </head>
-  <body>
-    <div id="una capa">
-      <h1>Hola mundo!</h1>
-      <p>Este es un ejemplo del uso de HTML para crear un documento web que nuestro navegador es capaz de interpretar.</p>
-    </div>
-  </body>
-</HTML>
+<html>
+<head>
+  <title>IPTV</title>
+	<style>
+		body {
+			background-color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+		}
+		.button-container {
+			display: flex; 
+			gap: 10px;
+		}
+		.button {
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 4px;
+		}
+		.tv-button {
+			background-color: red;
+		}
+		.movie-button {
+			background-color: blue;
+		}
+		.series-button {
+			background-color: darkorange;
+		}
+		.icon {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 5px;
+			width: 20px;
+			height: 20px;
+		}
+		.tv-icon {
+			background-color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="button-container">
+		<button class="button tv-button">
+			<span class="icon tv-icon"></span>
+			Live TV
+		</button>
+		<button class="button movie-button">
+			Peliculas
+		</button>
+		<button class="button series-button">
+			Series
+		</button>
+	</div>
+</body>
+</html>
