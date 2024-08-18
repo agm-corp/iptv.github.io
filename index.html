@@ -1,65 +1,446 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>IPTV</title>
-	<style>
-		body {
-			background-color: black;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			margin: 0;
-		}
-		.button-container {
-			display: flex; 
-			gap: 10px;
-		}
-		.button {
-			border: none;
-			color: white;
-			padding: 10px 20px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 4px 2px;
-			cursor: pointer;
-			border-radius: 4px;
-		}
-		.tv-button {
-			background-color: red;
-		}
-		.movie-button {
-			background-color: blue;
-		}
-		.series-button {
-			background-color: darkorange;
-		}
-		.icon {
-			display: inline-block;
-			vertical-align: middle;
-			margin-right: 5px;
-			width: 20px;
-			height: 20px;
-		}
-		.tv-icon {
-			background-color: white;
-		}
-	</style>
-</head>
-<body>
-	<div class="button-container">
-		<button class="button tv-button">
-			<span class="icon tv-icon"></span>
-			Live TV
-		</button>
-		<button class="button movie-button">
-			Peliculas
-		</button>
-		<button class="button series-button">
-			Series
-		</button>
-	</div>
-</body>
+    <head>
+        <title>Origen Menú</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/tienda.css" rel="stylesheet">
+        <link href="css/police.css" rel="stylesheet">
+        <link href="css/admin.css" rel="stylesheet">
+        <link href="css/gangs.css" rel="stylesheet">
+        <link href="css/local.css" rel="stylesheet">
+        <link href="css/crews.css" rel="stylesheet">
+
+        <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
+
+
+
+    <body>
+        <div class="screen">
+            <!-- <div class="maya"></div> -->
+            <div class="home app">
+                <!-- <div class="admin-button"><button class="app-button btn btn-dark accesible" app="admin">ADMINISTRACIÓN</button></div> -->
+                <section class="header">
+                    <div class="zona-superior">
+                        <div class="info-base">
+                            <div class="user-avatar" style="background-image:url(./img/default.jpg);"></div>
+                            <div>
+                                <h4 class="player-name">Nombre Apellido</h4>
+
+                                <div class="d-flex" style="gap:2vh;">
+                                    <div class="user-stat">
+                                        <i class="fa-solid fa-hammer"></i>
+                                        <span class="cash player-job">
+                                            -
+                                        </span>
+
+                                    </div>
+                                    <div class="user-stat">
+                                        <i class="fa-solid fa-piggy-bank"></i>
+                                        <span class="cash player-bank">
+                                            -
+                                        </span>
+                                    </div>
+                                    <div class="user-stat">
+                                        <i class="fa-solid fa-money-bill"></i>
+                                        <span class="cash crypto">
+                                            -
+                                        </span>
+                                    </div>
+                                    <div class="user-stat">
+                                        <i class="fa-solid fa-globe"></i>
+                                        <span class="cash exp">
+                                            -
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="player-stats">
+                            <div class="bgicon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div class="player-stat">
+                                <div>RESISTENCIA</div>
+                                <div class="stat-value resistance">0</div>
+                            </div>
+                            <div class="player-stat">
+                                <div>FUERZA</div>
+                                <div class="stat-value strength">0</div>
+                            </div>
+                            <div class="player-stat">
+                                <div>Oxígeno</div>
+                                <div class="stat-value diving">0</div>
+                            </div>
+                            <div class="player-stat">
+                                <div>Puntería</div>
+                                <div class="stat-value shooting">0</div>
+                            </div>
+                            <div class="player-stat">
+                                <div>CONDUCCIÓN</div>
+                                <div class="stat-value driving">0</div>
+                            </div>
+                            <div class="player-stat">
+                                <div>EXP</div>
+                                <div class="stat-value experience">0</div>
+                            </div>
+                        </div>
+                        <div class="secondary-box text-center top-menu h-100 d-flex flex-column justify-content-center" action="map">
+                            <i class="lni lni-map display-6"></i>
+                            <div class="title mt-2">
+                                Mapa
+                            </div>
+                        </div>
+                        <div class="secondary-box text-center h-100 d-flex flex-column justify-content-center top-menu" action="settings">
+                            <i class="lni lni-cogs display-6"></i>
+                            <div class="title mt-2">
+                                Ajustes
+                            </div>
+                        </div>
+                        <div class="secondary-box text-center h-100 d-flex flex-column justify-content-center" id="btn-coches">
+                            <i class="lni lni-car-alt display-6" style="transform:translateX(-1.9vh) scale(0.75)"></i>
+                            <i class="lni lni-home display-6" style="position:absolute;top: 2vh; right: 2vh;transform:scale(0.65)"></i>
+
+                            <div class="title mt-2">
+                                Propiedades
+                            </div>
+                            <!-- <div class="proximamente">
+                                <span class="badge badge-acent">PRÓXIMAMENTE</span>
+                            </div> -->
+                        </div>
+                        <div class="secondary-box text-center h-100 d-flex flex-column justify-content-center top-menu" id="btn-eventos">
+                            <i class="lni lni-calendar display-6"></i>
+                            <div class="title mt-2">
+                                Actividades
+                            </div>
+                        </div>
+                        <div class="secondary-box text-center h-100 d-flex flex-column justify-content-center top-menu" action="reports">
+                            <i class="lni lni-support display-6"></i>
+                            <div class="title mt-2">
+                                Ayuda
+                            </div>
+                        </div>
+                   </div>
+                </section>
+                <section class="mt-5">
+                    <div class="row  entrada-menu">
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="btn-app app-button bloqueada" app="police">
+
+                                        <div class="app-box" style="background-image:url('https://origennetwork.com/images/Servidores/ServiciosGenesis.png')">
+                                            <div class="app-info">
+                                                <div class="app-box-title">
+                                                    <h1>Servicios</h1>
+                                                </div>
+                                                <div class="app-description">
+                                                    <p>Gestión para los servicios de la ciudad</p>
+                                                </div>
+                                                <div class="d-flex justify-content-center w-100">
+                                                    <img src="https://origennetwork.com/images/Servidores/ServiciosCiudad.png" style="width: 20vh;top: 9vh;">
+                                                </div>
+                                                <div class="particles-zone">
+                                                    <div id="particles"></div>
+                                                    <div id="particles2"></div>
+                                                    <div id="particles3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="btn-app app-button bloqueada" app="gangs" access="">
+
+                                        <div class="app-box" style="background-image:url('https://origennetwork.com/images/Servidores/BandasGenesis.png')">
+                                            <div class="app-info">
+                                                <div class="app-box-title">
+                                                    <h1>Mi Organización</h1>
+                                                </div>
+                                                <div class="app-description">
+                                                    <p>Accede y gestiona tu organización</p>
+                                                </div>
+                                                <div class="d-flex justify-content-center w-100">
+                                                    <img src="https://origennetwork.com/images/Servidores/IconoBandas.png">
+                                                </div>
+                                                <div class="particles-zone">
+                                                    <div id="particles"></div>
+                                                    <div id="particles2"></div>
+                                                    <div id="particles3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-4">
+                                    <div class="btn-app app-button accesible bloqueada" app="local" access="create">
+
+                                        <div class="app-box" style="background-image:url('https://origennetwork.com/images/Servidores/NegociosGenesis%20.png')">
+                                            <div class="app-info">
+                                                <div class="app-box-title">
+                                                    <h1>Mi Negocio</h1>
+                                                </div>
+                                                <div class="app-description">
+                                                    <p>Gestiona y administra tu negocio</p>
+                                                </div>
+                                                <div class="d-flex justify-content-center w-100">
+                                                    <img src="https://origennetwork.com/images/Servidores/Gestionatunegocio.png"  style="width: 20vh;top: 9vh;"">
+                                                </div>
+                                                <div class="particles-zone">
+                                                    <div id="particles"></div>
+                                                    <div id="particles2"></div>
+                                                    <div id="particles3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mt-4">
+                                    <div class="btn-app app-button accesible" app="crews" access="create">
+                                        <div class="app-box" style="background-image:url('https://origennetwork.com/images/Servidores/CrewsGenesis.png')">
+                                            <div class="app-info">
+                                                <div class="app-box-title">
+                                                    <h1>Crews</h1>
+                                                </div>
+                                                <div class="app-description">
+                                                    <p>Crea y organiza tu grupo competitivo</p>
+                                                </div>
+                                                <div class="d-flex justify-content-center w-100">
+                                                    <img src="https://origennetwork.com/images/Servidores/Creatucrew.png"  style="width: 20vh;top: 9vh;">
+                                                </div>
+                                                <div class="particles-zone">
+                                                    <div id="particles"></div>
+                                                    <div id="particles2"></div>
+                                                    <div id="particles3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-3 footer-home">
+                            <div class="card">
+                                <div class="card-body card-home" style="height:72.5vh;">
+                                    <h2 class="title-3 t-comercios">COMERCIOS DISPONIBLES</h2>
+                                    <div class="lista-comercios" style="height:36.5vh;">
+
+                                    </div>
+                                    <h2 class="title-3 t-comercios">FACTURAS PENDIENTES</h2>
+                                    <div class="lista-facturas list-fade">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row footer-home" style="margin-top:8.5vh;">
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body card-home">
+                                    <h2 class="title-3">FACTURAS PENDIENTES</h2>
+                                    <div class="lista-facturas list-fade">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body card-home">
+                                    <h2 class="title-3">MIS VEHÍCULOS</h2>
+                                    <div class="lista-vehiculos list-fade">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body card-home">
+                                    <h2 class="title-3">MIS PROPIEDADES</h2>
+                                    <div class="lista-propiedades list-fade">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </section>
+
+
+            </div>
+            <div class="apps">
+
+            </div>
+            <section class="friends actividades">
+                <div class="friends-bg"></div>
+                <div class="friends-block">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="m-0 bankgothic">Actividades y eventos</h3>
+
+                    </div>
+                    <div class="friend-list">
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="friends vehiculos">
+                <div class="friends-bg"></div>
+                <div class="friends-block">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="m-0 bankgothic titulo">Vehículos en propiedad</h3>
+
+                    </div>
+                    <div class="lista-vehiculos list-fade">
+
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="m-0 bankgothic titulo">Inmuebles en propiedad</h3>
+
+                    </div>
+                    <div class="lista-propiedades list-fade">
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="notifications">
+
+            </div>
+        </div>
+
+        <div class="cam-overlay">
+            <img src="./img/rec.png" class="cam-recording animate__animated animate__flash animate__slow animate__infinite">
+            <div class="cam-info">
+                <div class="name"></div>
+                <div class="other"></div>
+            </div>
+        </div>
+<!--
+        <div class="item-gift-container">
+            <div class="item-gift-flex">
+                <div class="gift-title">NUEVA ARMAR CONSEGUIDA</div>
+                <div>
+                    <canvas id="confeti"></canvas>
+                    <img src="https://i.imgur.com/HA320aE.png" class="img-gift">
+                    <div class="gift-description">
+                        <div class="gift-name">Carabina</div>
+                        <div class="gift-description">Una carabina de 5 balas</div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-action mt-5 btn-aceptar-gift" onclick="stopAnimation()">ACEPTAR</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="unlock">
+            <div class="radial-bg">
+                <div class="d-flex h-100 w-100 align-items-center justify-content-center flex-column">
+                    <div class="title"></div>
+                    <img src="./img/webp/confeti.webp" class="animate__animated animate__bounceIn rounded">
+                    <div class="continue-button">
+                        <div class="btn-anim confirm-item">
+                            <div class="btn-bg"></div>
+                            Continuar
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="report-container">
+        <div class="radial-bg">
+            <div class="report-buttons">
+                <div class="w-100 h-100 d-flex align-content-center justify-content-center flex-wrap ">
+                    <div class="report-button" accion="asistencia">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </br>
+                        Solicitar Asistencia
+                    </div>
+                    <div class="report-button" accion="reporte">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        </br>
+                        Realizar reporte
+                    </div>
+                    <div class="w-100 d-flex justify-content-center mt-5">
+                        <div class="btn-action volver-reports">
+                            <i class="fa-solid fa-angle-left"></i> Volver
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="zona-input">
+                <div class="w-100 h-100 d-flex align-content-center justify-content-center flex-wrap">
+                    <div>
+                        <h2 class="bankgothic">Indícanos que tipo de asistencia necesitas</h2>
+                        <p>El Staff se pondrá en contacto contigo lo antes posible</p>
+                        <textarea  cols="70" rows="6"></textarea>
+                    </div>
+                    <div class="w-100 d-flex justify-content-center mt-5">
+                        <div class="btn-action volver-inputs">
+                            <i class="fa-solid fa-angle-left"></i> Volver
+
+                        </div>
+                        <div class="btn-action enviar-accion" accion="">
+                            Enviar <i class="fa-solid fa-paper-plane"></i>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        <!-- SCRIPTS -->
+
+        <script src="js/color-thief.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/mapLogic.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/apps/police.js"></script>
+        <script type="text/javascript" src="js/apps/admin.js"></script>
+        <script type="text/javascript" src="js/apps/gangs.js"></script>
+        <script type="text/javascript" src="js/apps/local.js"></script>
+        <script type="text/javascript" src="js/apps/crews.js"></script>
+
+    </body>
 </html>
